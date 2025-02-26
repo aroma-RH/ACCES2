@@ -6,170 +6,111 @@
     <title>Login Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* Default Light Mode Styles */
         :root {
             --primary-color: #4a90e2;
-            --secondary-color: #333;
-            --background-color: #f4f4f4;
-            --button-bg: #4a90e2;
-            --button-hover-bg: #357ab7;
-            --input-border-color: #ccc;
-            --error-color: red;
-            --text-color: #333;
+            --background-light: rgba(255, 255, 255, 0.2);
+            --text-dark: #333;
+            --border-radius: 12px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        /* Dark Mode Styles */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --background-color: #333;
-                --secondary-color: #fff;
-                --primary-color: #4a90e2;
-                --button-bg: #357ab7;
-                --button-hover-bg: #4a90e2;
-                --input-border-color: #666;
-                --error-color: #ff6347;
-                --text-color: #fff;
-            }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: var(--background-color);
-            margin: 0;
-            padding: 0;
+            background: url('https://source.unsplash.com/1920x1080/?technology,abstract') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-           
-            background-size: cover;
-            background-position: center;
         }
 
         .login-container {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            transform: translateY(0);
-            transition: transform 0.3s ease;
+            background: var(--background-light);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            width: 350px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
         }
 
         .login-container:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
         }
 
-        .login-container h1 {
+        h1 {
+            color: var(--text-dark);
             margin-bottom: 20px;
             font-size: 24px;
-            text-align: center;
-            color: var(--primary-color);
         }
 
         .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: var(--secondary-color);
+            margin-bottom: 20px;
+            text-align: left;
         }
 
         .form-group input {
-            width: 95%;
-            padding: 10px;
-            border: 1px solid var(--input-border-color);
-            border-radius: 5px;
-            transition: border-color 0.3s ease;
-            color: red;
-            font-weight: bolder;
-            font-size: x-large;
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            font-size: 18px;
+            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.5);
         }
 
         .form-group input:focus {
-            border-color: var(--primary-color);
             outline: none;
+            border-color: rgb(2, 66, 59);
+            box-shadow: 0 0 12px rgba(74, 144, 226, 0.5);
         }
 
         .btn {
             width: 100%;
-            padding: 10px;
-            background: var(--button-bg);
+            padding: 14px;
+            background: rgb(2, 66, 59);
             color: #fff;
             border: none;
-            border-radius: 5px;
-            font-size: 16px;
+            border-radius: var(--border-radius);
+            font-size: 18px;
+            font-weight: bold;
             cursor: pointer;
-            margin: 3px 0;
-            transition: background-color 0.3s ease;
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 5px;
+            box-shadow: 2px 0 12px rgba(250, 0, 0, 0.1);
         }
 
         .btn:hover {
-            background: var(--button-hover-bg);
-        }
-
-        .btn1 {
-            width: 100%;
-            padding: 10px;
-            background: #f5a623;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 3px 0;
-        }
-
-        .btn1:hover {
-            background: #e08500;
-        }
-
-        .error {
-            color: var(--error-color);
-            font-size: 14px;
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color: var(--primary-color);
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background-color: var(--button-hover-bg);
+            background: rgb(7, 158, 140);
+            transform: scale(1.05);
         }
 
         @media (max-width: 600px) {
             .login-container {
                 width: 90%;
-                padding: 15px;
             }
         }
     </style>
 </head>
 <body>
-
-<div class="login-container">
-    <h1>Accédez à votre compte</h1>
-    <form id="loginForm">
-        <div class="form-group">
-            <input type="password" id="password" name="password" required placeholder="Entrez votre mot de passe">
-        </div>
-        <button type="submit" class="btn">Se connecter</button>
-        <button type="button" id="clearButton" class="btn1">Admin</button>
+    <div class="login-container">
+        <h1>Se Connecter</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Mot de passe" required>
+            </div>
+            <button type="submit" class="btn">Connecter</button>
+            <button type="button" id="clearButton" class="btn">Admin</button>
         <div class="error" id="errorMessage"></div>
-    </form>
-</div>
-
+        </form>
+    </div>
+    
 <script>
     const passwordLinks = {
         "jid2024": "https://aroma-rh.github.io/EF1/",
@@ -226,6 +167,5 @@
             });
     });
 </script>
-
 </body>
 </html>
